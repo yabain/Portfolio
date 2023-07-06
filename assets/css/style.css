@@ -1,10 +1,167 @@
-/**
-* Template Name: Folio
-* Updated: May 30 2023 with Bootstrap v5.3.0
-* Template URL: https://bootstrapmade.com/folio-bootstrap-portfolio-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
+
+
+
+
+.articles p {
+  font-size: 20px;
+  font-weight:300;
+}
+
+article {
+  --img-scale: 1.001;
+  --title-color: black;
+  --link-icon-translate: -20px;
+  --link-icon-opacity: 0;
+  position: relative;
+  border-radius: 16px;
+  box-shadow: none;
+  background: #fff;
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+}
+
+article a::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  cursor: pointer;
+  content: "";
+}
+
+/* basic article elements styling */
+article h2 {
+  margin: 10px 0 18px 0;
+  font-size: 1.9rem;
+  letter-spacing: 0.06em;
+  color: #1d436d !important;
+  transition: color 0.3s ease-out;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+article img {
+  max-width: 100%;
+  transform-origin: center;
+  transform: scale(var(--img-scale));
+  transition: transform 0.4s ease-in-out;
+}
+
+.article-body {
+  padding: 24px;
+}
+
+article a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #1d436d;
+  font-weight: bolder;
+}
+
+article a:focus {
+  outline: 1px dotted #1d436d;
+  font-weight: bolder;
+}
+
+article a .icon {
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+  transform: translateX(var(--link-icon-translate));
+  opacity: var(--link-icon-opacity);
+  transition: all 0.3s;
+}
+
+/* using the has() relational pseudo selector to update our custom properties */
+article:has(:hover, :focus) {
+  --img-scale: 1.1;
+  --title-color: #1d436d;
+  --link-icon-translate: 0;
+  --link-icon-opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+
+/************************ 
+Generic layout (demo looks)
+**************************/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 48px 0;
+  font-family: "Figtree", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  background-image: linear-gradient(45deg, #7c9885, #b5b682);
+  min-height: 100vh;
+}
+
+.articles {
+  display: grid;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  padding-top: 0 !important;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+@media screen and (max-width: 960px) {
+  article {
+    container: card/inline-size;
+  }
+}
+
+@container card (min-width: 380px) {
+  .article-wrapper {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+  .article-body {
+    padding-left: 0;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  figure img {
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+
+
+
+
+
+
 
 /*--------------------------------------------------------------
 # General
@@ -72,7 +229,7 @@ p {
 }
 
 .btn {
-  background: #333;
+  background: #b8a07e;
   border: medium none;
   border-radius: 0;
   color: #fff;
@@ -81,11 +238,14 @@ p {
   line-height: 50px;
   padding: 0 30px;
   text-transform: uppercase;
+  border-radius: 5px;
 }
 
 .btn:hover,
 .btn:focus {
-  color: #fff;
+  color: #b8a07e;
+  border: #b8a07e solid;
+  background-color: #fff !important;
 }
 
 .padDiv {
@@ -449,7 +609,7 @@ p {
 # Hero
 --------------------------------------------------------------*/
 #hero {
-  background: url("../img/home-bg.jpg") repeat scroll center center/cover;
+  background: url("../img/home-bg.webp") repeat scroll center center/cover;
   height: 100vh;
   width: 100%;
 }
@@ -558,7 +718,7 @@ p {
 #about {
   width: 100%;
   height: auto;
-  background: #f7f7f7;
+  background: #ececec;
   padding-top: 120px;
 }
 
@@ -593,7 +753,7 @@ p {
 # Services
 --------------------------------------------------------------*/
 #services {
-  background: #f7f7f7;
+  background: #ececec;
   position: relative;
   padding-bottom: 80px;
 }
@@ -679,6 +839,15 @@ p {
 
 #portfolio .portfolio-item {
   margin-bottom: 30px;
+}
+
+#portfolio .portfolio-item {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+#portfolio .portfolio-item:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 #portfolio .portfolio-item .portfolio-info {
@@ -802,7 +971,7 @@ p {
 #journal-blog {
   height: auto;
   width: 100%;
-  background: #f7f7f7;
+  background: #ececec;
   padding-bottom: 60px;
   position: relative;
 }
@@ -951,7 +1120,7 @@ p {
 
 /* main content */
 .main-content {
-  background: #f7f7f7;
+  background: #ececec;
 }
 
 .main-content .container-main {
@@ -1072,7 +1241,7 @@ blockquote {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #f7f7f7;
+  background: #ececec;
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -1147,7 +1316,7 @@ blockquote {
     float: none;
     width: 100%;
     text-align: center;
-    border-top: 1px solid #f7f7f7;
+    border-top: 1px solid #ececec;
     line-height: 45px;
     margin-left: 0;
     padding-top: 10px;
@@ -1230,7 +1399,7 @@ blockquote {
     float: none;
     width: 100%;
     text-align: center;
-    border-top: 1px solid #f7f7f7;
+    border-top: 1px solid #ececec;
     line-height: 45px;
     margin-left: 0;
     padding-top: 10px;
@@ -1313,7 +1482,7 @@ blockquote {
     float: none;
     width: 100%;
     text-align: center;
-    border-top: 1px solid #f7f7f7;
+    border-top: 1px solid #ececec;
     line-height: 45px;
     margin-left: 0;
     padding-top: 10px;
@@ -1396,7 +1565,7 @@ blockquote {
     float: none;
     width: 100%;
     text-align: center;
-    border-top: 1px solid #f7f7f7;
+    border-top: 1px solid #ececec;
     line-height: 45px;
     margin-left: 0;
     padding-top: 10px;
@@ -1478,7 +1647,7 @@ blockquote {
     float: none;
     width: 100%;
     text-align: center;
-    border-top: 1px solid #f7f7f7;
+    border-top: 1px solid #ececec;
     line-height: 45px;
     margin-left: 0;
     padding-top: 10px;
